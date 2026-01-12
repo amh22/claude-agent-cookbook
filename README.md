@@ -120,11 +120,14 @@ npx tsx agents/code-review/01-basic.ts
 Build a practical agent with multi-tool orchestration
 
 ```bash
-# Using npm scripts (easier)
+# Using npm scripts (reviews examples directory with buggy-code.ts)
 npm run code-review:simple
 
-# Or directly with tsx
-npx tsx agents/code-review/02-simple.ts [directory]
+# Or review a specific directory
+npx tsx agents/code-review/02-simple.ts /path/to/your/code
+
+# Review entire repository
+npx tsx agents/code-review/02-simple.ts .
 ```
 
 **What you learn**: Permission modes, autonomous tool coordination, real-time progress
@@ -133,11 +136,14 @@ npx tsx agents/code-review/02-simple.ts [directory]
 Production-ready patterns with JSON schemas and sub-agents
 
 ```bash
-# Using npm scripts (easier)
+# Using npm scripts (reviews examples directory with buggy-code.ts)
 npm run code-review:advanced
 
-# Or directly with tsx
-npx tsx agents/code-review/03-advanced.ts [directory]
+# Or review a specific directory
+npx tsx agents/code-review/03-advanced.ts /path/to/your/code
+
+# Review entire repository
+npx tsx agents/code-review/03-advanced.ts .
 ```
 
 **What you learn**: Structured outputs, sub-agent delegation, type-safe results

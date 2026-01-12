@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "code-review:basic": "tsx agents/code-review/01-basic.ts",
-    "code-review:simple": "tsx agents/code-review/02-simple.ts",
-    "code-review:advanced": "tsx agents/code-review/03-advanced.ts",
+    "code-review:simple": "tsx agents/code-review/02-simple.ts agents/code-review/examples",
+    "code-review:advanced": "tsx agents/code-review/03-advanced.ts agents/code-review/examples",
     "build": "tsc",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist"
