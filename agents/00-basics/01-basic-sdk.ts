@@ -1,9 +1,11 @@
 import { query } from "@anthropic-ai/claude-agent-sdk"
 
 /**
- * Level 1: Basic Agent SDK Demo
+ * SDK Basics: Foundational Agent Concepts
  *
- * This example demonstrates the fundamental concepts of the Claude Agent SDK:
+ * What this does: Lists files in a directory and describes what it finds.
+ *
+ * This tutorial demonstrates fundamental concepts that apply to ALL agent types:
  * - Streaming message handling
  * - Tool permissions and selection
  * - Session tracking
@@ -12,6 +14,8 @@ import { query } from "@anthropic-ai/claude-agent-sdk"
  * Key Concept: What makes the Agent SDK different?
  * Claude executes tools directly - you don't implement tool logic,
  * just handle the streaming responses as Claude autonomously works.
+ *
+ * Start here before building any agent - these concepts are universal!
  *
  * Learn more: https://github.com/anthropics/claude-agent-sdk-typescript
  */

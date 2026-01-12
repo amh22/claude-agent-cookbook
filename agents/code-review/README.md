@@ -4,61 +4,19 @@ Automated code analysis powered by Claude - find bugs, security vulnerabilities,
 
 ## Overview
 
-This agent demonstrates a **progressive learning approach** with three levels of implementation, each building on the previous one. Start with Level 1 to learn SDK basics, then progress through increasingly sophisticated implementations.
+This agent demonstrates **progressive implementation** with two levels, showing the evolution from simple to production-ready.
 
-### Why Three Levels?
+**Prerequisites**: Complete the [SDK Basics tutorial](../00-basics/) first to understand foundational concepts!
 
-1. **Learn incrementally** - Master concepts step-by-step without overwhelming complexity
+### Why Two Levels?
+
+1. **Learn incrementally** - Master practical patterns step-by-step
 2. **See the evolution** - Understand how simple agents become production-ready
 3. **Choose your complexity** - Use the level that matches your needs
 
-## The Three Levels
+## The Two Levels
 
-### Level 1: Basic SDK Usage (`01-basic.ts`)
-
-**Goal**: Understand fundamental SDK concepts
-
-**What it does**:
-- Lists files in a directory
-- Demonstrates streaming messages
-- Shows tool usage in real-time
-- Tracks costs and session IDs
-
-**What you learn**:
-- How the agentic loop works (async iteration)
-- Message types: `system`, `assistant`, `result`
-- Tool permissions and selection
-- Cost monitoring
-- Claude executes tools autonomously
-
-**Run it**:
-```bash
-# Using npm scripts (easier)
-npm run code-review:basic
-
-# Or directly with tsx
-npx tsx agents/code-review/01-basic.ts
-```
-
-**Key Code**:
-```typescript
-for await (const message of query({
-  prompt: "What files are in this directory?",
-  options: {
-    model: "opus",
-    allowedTools: ["Glob", "Read"],
-    maxTurns: 250,
-  },
-})) {
-  // Handle streaming messages
-}
-```
-
-**Estimated cost**: $0.001 - $0.003
-
----
-
-### Level 2: Simple Code Review (`02-simple.ts`)
+### Level 1: Simple Code Review (`01-simple.ts`)
 
 **Goal**: Build a practical agent that performs real work
 
@@ -81,10 +39,10 @@ for await (const message of query({
 npm run code-review:simple
 
 # Or review a specific directory
-npx tsx agents/code-review/02-simple.ts /path/to/your/code
+npx tsx agents/code-review/01-simple.ts /path/to/your/code
 
 # Review entire repository
-npx tsx agents/code-review/02-simple.ts .
+npx tsx agents/code-review/01-simple.ts .
 ```
 
 **Key Code**:
@@ -99,7 +57,7 @@ options: {
 
 ---
 
-### Level 3: Advanced with Structured Output (`03-advanced.ts`)
+### Level 2: Advanced with Structured Output (`02-advanced.ts`)
 
 **Goal**: Production-ready patterns with type-safe, machine-readable results
 

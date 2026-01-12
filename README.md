@@ -22,13 +22,14 @@ Unlike traditional code examples that just show API calls, these agents are **fu
 
 ## Available Recipes
 
-| Recipe | Status | Description | Complexity |
-|--------|--------|-------------|------------|
-| [**Code Review**](agents/code-review/) | ✅ **Ready** | Automated code analysis for bugs, security, performance | Progressive (3 levels) |
-| [**Research**](agents/research/) | 🔜 Coming Soon | Web research and information synthesis | - |
-| [**Bookkeeping**](agents/bookkeeping/) | 🔜 Coming Soon | Financial data processing and expense tracking | - |
-| [**Documentation**](agents/documentation/) | 🔜 Coming Soon | Auto-generate docs from code | - |
-| [**Testing**](agents/testing/) | 🔜 Coming Soon | Generate test cases and identify edge cases | - |
+| Recipe                                     | Status         | Description                                             | Complexity             |
+| ------------------------------------------ | -------------- | ------------------------------------------------------- | ---------------------- |
+| [**SDK Basics**](agents/00-basics/)        | ✅ **Ready**   | Foundational concepts for ALL agents                    | Tutorial (1 level)     |
+| [**Code Review**](agents/code-review/)     | ✅ **Ready**   | Automated code analysis for bugs, security, performance | Progressive (2 levels) |
+| [**Research**](agents/research/)           | 🔜 Coming Soon | Web research and information synthesis                  | -                      |
+| [**Bookkeeping**](agents/bookkeeping/)     | 🔜 Coming Soon | Financial data processing and expense tracking          | -                      |
+| [**Documentation**](agents/documentation/) | 🔜 Coming Soon | Auto-generate docs from code                            | -                      |
+| [**Testing**](agents/testing/)             | 🔜 Coming Soon | Generate test cases and identify edge cases             | -                      |
 
 Want to add a new recipe? See [Contributing](#contributing)!
 
@@ -92,6 +93,7 @@ anthropic configure
 ```
 
 **Security Best Practices:**
+
 - ✅ Never commit your `.env` file to git (already in `.gitignore`)
 - ✅ Never hardcode API keys in source code
 - ✅ Use environment variables or secure vaults in production
@@ -99,40 +101,45 @@ anthropic configure
 
 **Get your API key**: [console.anthropic.com/settings/keys](https://console.anthropic.com/settings/keys)
 
-## Featured Recipe: Code Review Agent
+## Getting Started
 
-The **Code Review Agent** is a fully-implemented example showing three levels of complexity:
+### Step 1: Learn SDK Basics
 
-### Level 1: Basic SDK Usage
-Learn fundamental concepts - streaming, tools, session tracking
+**Start here first!** The [SDK Basics tutorial](agents/00-basics/) teaches foundational concepts used in ALL agents:
 
 ```bash
-# Using npm scripts (easier)
-npm run code-review:basic
-
-# Or directly with tsx
-npx tsx agents/code-review/01-basic.ts
+npm run basics:sdk
 ```
 
-**What you learn**: Message streams, tool permissions, cost monitoring
+This simple file-listing agent demonstrates:
 
-### Level 2: Simple Code Review
-Build a practical agent with multi-tool orchestration
+- Streaming message handling
+- Tool autonomy
+- Session tracking and cost monitoring
+
+### Step 2: Build a Real Agent
+
+Once you understand the basics, try the **[Code Review Agent](agents/code-review/)** - a fully-implemented example with two levels:
+
+#### Level 1: Simple Code Review
+
+Multi-tool orchestration for practical code analysis
 
 ```bash
 # Using npm scripts (reviews examples directory with buggy-code.ts)
 npm run code-review:simple
 
 # Or review a specific directory
-npx tsx agents/code-review/02-simple.ts /path/to/your/code
+npx tsx agents/code-review/01-simple.ts /path/to/your/code
 
 # Review entire repository
-npx tsx agents/code-review/02-simple.ts .
+npx tsx agents/code-review/01-simple.ts .
 ```
 
 **What you learn**: Permission modes, autonomous tool coordination, real-time progress
 
-### Level 3: Advanced with Structured Output
+#### Level 2: Advanced with Structured Output
+
 Production-ready patterns with JSON schemas and sub-agents
 
 ```bash
@@ -140,10 +147,10 @@ Production-ready patterns with JSON schemas and sub-agents
 npm run code-review:advanced
 
 # Or review a specific directory
-npx tsx agents/code-review/03-advanced.ts /path/to/your/code
+npx tsx agents/code-review/02-advanced.ts /path/to/your/code
 
 # Review entire repository
-npx tsx agents/code-review/03-advanced.ts .
+npx tsx agents/code-review/02-advanced.ts .
 ```
 
 **What you learn**: Structured outputs, sub-agent delegation, type-safe results
@@ -189,10 +196,13 @@ See the [Code Review Agent README](agents/code-review/README.md) for full docume
 ```
 claude-agent-cookbook/
 ├── agents/
-│   ├── code-review/         # ✅ Fully implemented (3 progressive levels)
-│   │   ├── 01-basic.ts
-│   │   ├── 02-simple.ts
-│   │   ├── 03-advanced.ts
+│   ├── 00-basics/           # 📚 Start here! SDK fundamentals
+│   │   ├── 01-basic-sdk.ts  # File listing + core concepts
+│   │   └── README.md
+│   │
+│   ├── code-review/         # ✅ Fully implemented (2 levels)
+│   │   ├── 01-simple.ts     # Simple code review
+│   │   ├── 02-advanced.ts   # Structured output + sub-agents
 │   │   ├── examples/
 │   │   │   ├── buggy-code.ts    # Test code with intentional bugs
 │   │   │   └── sample-output.txt
@@ -219,24 +229,28 @@ claude-agent-cookbook/
 Across the cookbook recipes, you'll learn:
 
 ### SDK Fundamentals
+
 - Streaming message handling and real-time progress
 - Tool permission modes (bypass, prompt, restricted)
 - Cost tracking and session management
 - Error handling patterns
 
 ### Advanced Patterns
+
 - Structured outputs with JSON schemas (type-safe AI responses!)
 - Sub-agent orchestration for specialized tasks
 - Multi-tool coordination strategies
 - Model selection for cost/performance tradeoffs
 
 ### Production Practices
+
 - TypeScript type safety with AI
 - Organized result presentation
 - CLI argument handling
 - Graceful error handling and user feedback
 
 ### Real-World Applications
+
 - Code analysis workflows
 - Information gathering and synthesis
 - Data processing pipelines
@@ -246,11 +260,12 @@ Across the cookbook recipes, you'll learn:
 
 Each agent run costs approximately:
 
-- **Level 1 (Basic)**: $0.001 - $0.005 (simple queries)
-- **Level 2 (Simple)**: $0.01 - $0.05 (multi-tool tasks)
-- **Level 3 (Advanced)**: $0.03 - $0.10 (with sub-agents)
+- **SDK Basics**: $0.001 - $0.005 (simple file listing)
+- **Code Review Simple**: $0.01 - $0.05 (multi-tool code analysis)
+- **Code Review Advanced**: $0.03 - $0.10 (with sub-agents and structured output)
 
 Costs depend on:
+
 - Number of files/sources analyzed
 - Complexity of the task
 - Model used (Opus > Sonnet > Haiku)
@@ -261,6 +276,7 @@ Costs depend on:
 ## IDE Support
 
 This cookbook works great with:
+
 - ✅ **Cursor** - AI-powered editor (`.cursor/` in `.gitignore`)
 - ✅ **VS Code** - Popular choice for TypeScript
 - ✅ **Any editor** - Standard TypeScript project
@@ -270,9 +286,11 @@ This cookbook works great with:
 We'd love your contributions! Here's how you can help:
 
 ### Add a New Recipe
+
 The most valuable contribution! See [CONTRIBUTING.md](CONTRIBUTING.md) for the full guide.
 
 Quick steps:
+
 1. Create `agents/your-agent-name/` directory
 2. Implement your agent (progressive levels encouraged)
 3. Add README explaining the recipe
@@ -280,12 +298,14 @@ Quick steps:
 5. Submit a pull request
 
 ### Improve Existing Recipes
+
 - Enhance documentation
 - Add error handling
 - Optimize performance
 - Add new features or levels
 
 ### Report Issues or Ideas
+
 - Found a bug? Open an issue
 - Have an idea for a new recipe? Start a discussion
 - Want to improve docs? PRs welcome!
@@ -295,11 +315,13 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 ## Resources
 
 ### Documentation
+
 - **[Getting Started Guide](docs/getting-started.md)** - Detailed setup with all 3 API key methods
 - **[Architecture Guide](docs/architecture.md)** - Design decisions and patterns explained
 - **[Contributing Guide](CONTRIBUTING.md)** - How to add new agent recipes
 
 ### External Resources
+
 - **Claude Agent SDK**: [github.com/anthropics/claude-agent-sdk-typescript](https://github.com/anthropics/claude-agent-sdk-typescript)
 - **Anthropic API Docs**: [docs.anthropic.com](https://docs.anthropic.com/)
 - **Claude Console**: [console.anthropic.com](https://console.anthropic.com/)
@@ -309,15 +331,19 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 ## Troubleshooting
 
 ### "ANTHROPIC_API_KEY environment variable not set"
+
 → Follow the [API Key Setup](#api-key-setup) section above
 
 ### "Module not found: @anthropic-ai/claude-agent-sdk"
+
 → Run `npm install`
 
 ### "Permission denied" when running agents
+
 → Some operations require approval. Use `permissionMode: "bypassPermissions"` for read-only operations, or manually approve prompts.
 
 ### TypeScript errors
+
 → Run `npm run typecheck` to see detailed errors
 
 ## License
@@ -332,9 +358,9 @@ Feel free to use these recipes in your own projects, commercial or otherwise!
 
 ## Acknowledgments
 
+- Inspired by ["The Complete Guide to Building Agents"](https://x.com/dabit3/status/2009131298250428923) by [Nader Dabit](https://x.com/dabit3)
 - Built with [Claude Agent SDK](https://github.com/anthropics/claude-agent-sdk-typescript) by Anthropic
 - Inspired by the [OpenAI Cookbook](https://github.com/openai/openai-cookbook)
-- Inspired by ["The Complete Guide to Building Agents"](https://x.com/dabit3/status/2009131298250428923) by [Nader Dabit](https://x.com/dabit3)
 - Educational approach influenced by progressive disclosure learning principles
 
 ---
