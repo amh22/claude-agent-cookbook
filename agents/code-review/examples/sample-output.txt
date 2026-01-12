@@ -9,7 +9,7 @@
    Sub-agents: security-scanner
 
 🔧 Glob: **/*.ts
-🔧 Read: example.ts
+🔧 Read: examples/buggy-code.ts
 🔧 Read: 01-basic.ts
 🔧 Read: 02-simple.ts
 🤖 Delegating to sub-agent: security-scanner
@@ -26,27 +26,27 @@
 Score: 45/100
 Issues Found: 5
 
-Summary: Multiple critical issues found including off-by-one errors, missing type safety, and security vulnerabilities. The example.ts file demonstrates several common anti-patterns that should be addressed. The agent implementation files (01-basic.ts, 02-simple.ts, 03-advanced.ts) show good practices with proper error handling and type safety.
+Summary: Multiple critical issues found including off-by-one errors, missing type safety, and security vulnerabilities. The examples/buggy-code.ts file demonstrates several common anti-patterns that should be addressed. The agent implementation files (01-basic.ts, 02-simple.ts, 03-advanced.ts) show good practices with proper error handling and type safety.
 
 🔴 CRITICAL (2)
 ------------------------------
 
-[bug] example.ts:2
+[bug] examples/buggy-code.ts:2
   Off-by-one error in loop condition will cause array index out of bounds exception when i equals users.length
   💡 Change `i <= users.length` to `i < users.length`
 
-[security] example.ts:9
+[security] examples/buggy-code.ts:9
   Sensitive password credential logged to console, which will expose it in logs, monitoring systems, and potentially to attackers
   💡 Remove the console.log statement entirely or redact sensitive data before logging with: console.log("Connecting with:", password.replace(/./g, '*'))
 
 🟠 HIGH (2)
 ------------------------------
 
-[bug] example.ts:4
+[bug] examples/buggy-code.ts:4
   No null or undefined check before accessing user.name property, will crash if users array contains null/undefined elements
   💡 Add optional chaining and null coalescing: `users[i]?.name?.toUpperCase() ?? 'UNKNOWN'`
 
-[bug] example.ts:16
+[bug] examples/buggy-code.ts:16
   Fetch call lacks error handling for network failures, timeouts, or invalid responses. Will throw unhandled promise rejection on failure
   💡 Wrap in try-catch block and handle different error scenarios:
       try {
@@ -61,6 +61,6 @@ Summary: Multiple critical issues found including off-by-one errors, missing typ
 🟡 MEDIUM (1)
 ------------------------------
 
-[style] example.ts:13
+[style] examples/buggy-code.ts:13
   Missing TypeScript type annotation for url parameter reduces type safety and makes the function signature unclear
   💡 Add explicit type annotation: `async function fetchData(url: string): Promise<any>`

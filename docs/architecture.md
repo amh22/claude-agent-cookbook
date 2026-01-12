@@ -50,8 +50,9 @@ claude-agent-cookbook/
 │   │   ├── 01-basic.ts       # Progressive levels
 │   │   ├── 02-simple.ts
 │   │   ├── 03-advanced.ts
-│   │   ├── example.ts        # Test data
-│   │   ├── examples/         # Sample outputs
+│   │   ├── examples/         # Test data and sample outputs
+│   │   │   ├── buggy-code.ts
+│   │   │   └── sample-output.txt
 │   │   └── README.md         # Recipe-specific docs
 │   ├── research/             # Future recipes...
 │   └── ...

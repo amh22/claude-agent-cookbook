@@ -156,7 +156,7 @@ options: {
    Sub-agents: security-scanner
 
 🔧 Glob: **/*.ts
-🔧 Read: example.ts
+🔧 Read: buggy-code.ts
 🤖 Delegating to sub-agent: security-scanner
 🔧 Grep: "password" in .
 
@@ -175,38 +175,38 @@ missing type safety, and security vulnerabilities.
 🔴 CRITICAL (2)
 ------------------------------
 
-[bug] example.ts:2
+[bug] buggy-code.ts:2
   Off-by-one error in loop will cause array index out of bounds
   💡 Change `i <= users.length` to `i < users.length`
 
-[security] example.ts:9
+[security] buggy-code.ts:9
   Sensitive password logged to console, exposing credentials
   💡 Remove console.log or redact sensitive data
 
 🟠 HIGH (2)
 ------------------------------
 
-[bug] example.ts:4
+[bug] buggy-code.ts:4
   No null check before accessing user.name property
   💡 Add optional chaining: users[i]?.name
 
-[bug] example.ts:16
+[bug] buggy-code.ts:16
   Fetch call lacks error handling for network failures
   💡 Wrap in try-catch block
 
 🟡 MEDIUM (1)
 ------------------------------
 
-[style] example.ts:13
+[style] buggy-code.ts:13
   Missing TypeScript type annotation for url parameter
   💡 Add type: `url: string`
 ```
 
 Full example output: [examples/sample-output.txt](examples/sample-output.txt)
 
-## Testing with example.ts
+## Testing with buggy-code.ts
 
-The `example.ts` file contains intentional bugs for testing the agent:
+The `buggy-code.ts` file contains intentional bugs for testing the agent:
 
 ```typescript
 function processUsers(users: any) {

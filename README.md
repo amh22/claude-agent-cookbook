@@ -139,7 +139,7 @@ npx tsx agents/code-review/03-advanced.ts [directory]
 ==================================================
 
 🔧 Glob: **/*.ts
-🔧 Read: example.ts
+🔧 Read: buggy-code.ts
 🤖 Delegating to sub-agent: security-scanner
 🔧 Grep: "password" in .
 
@@ -155,11 +155,11 @@ Issues Found: 5
 🔴 CRITICAL (2)
 ------------------------------
 
-[bug] example.ts:2
+[bug] buggy-code.ts:2
   Off-by-one error in loop condition
   💡 Change `i <= users.length` to `i < users.length`
 
-[security] example.ts:9
+[security] buggy-code.ts:9
   Sensitive password logged to console
   💡 Remove console.log or redact sensitive data
 ```
@@ -175,8 +175,8 @@ claude-agent-cookbook/
 │   │   ├── 01-basic.ts
 │   │   ├── 02-simple.ts
 │   │   ├── 03-advanced.ts
-│   │   ├── example.ts       # Test code with intentional bugs
 │   │   ├── examples/
+│   │   │   ├── buggy-code.ts    # Test code with intentional bugs
 │   │   │   └── sample-output.txt
 │   │   └── README.md
 │   │
