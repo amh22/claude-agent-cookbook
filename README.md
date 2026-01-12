@@ -354,13 +354,12 @@ Feel free to use these recipes in your own projects, commercial or otherwise!
 
 ## Author
 
-**Andrew Henry** - [GitHub Profile](https://github.com/yourusername)
+**Andrew Henry** - [GitHub Profile](https://github.com/amh22)
 
 ## Acknowledgments
 
 - Inspired by ["The Complete Guide to Building Agents"](https://x.com/dabit3/status/2009131298250428923) by [Nader Dabit](https://x.com/dabit3)
 - Built with [Claude Agent SDK](https://github.com/anthropics/claude-agent-sdk-typescript) by Anthropic
-- Inspired by the [OpenAI Cookbook](https://github.com/openai/openai-cookbook)
 - Educational approach influenced by progressive disclosure learning principles
 
 ---
