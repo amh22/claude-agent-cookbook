@@ -276,6 +276,12 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
 
 ## Resources
 
+### Documentation
+- **[Getting Started Guide](docs/getting-started.md)** - Detailed setup with all 3 API key methods
+- **[Architecture Guide](docs/architecture.md)** - Design decisions and patterns explained
+- **[Contributing Guide](CONTRIBUTING.md)** - How to add new agent recipes
+
+### External Resources
 - **Claude Agent SDK**: [github.com/anthropics/claude-agent-sdk-typescript](https://github.com/anthropics/claude-agent-sdk-typescript)
 - **Anthropic API Docs**: [docs.anthropic.com](https://docs.anthropic.com/)
 - **Claude Console**: [console.anthropic.com](https://console.anthropic.com/)
@@ -310,6 +316,7 @@ Feel free to use these recipes in your own projects, commercial or otherwise!
 
 - Built with [Claude Agent SDK](https://github.com/anthropics/claude-agent-sdk-typescript) by Anthropic
 - Inspired by the [OpenAI Cookbook](https://github.com/openai/openai-cookbook)
+- Inspired by ["The Complete Guide to Building Agents"](https://x.com/dabit3/status/2009131298250428923) by [Nader Dabit](https://x.com/dabit3)
 - Educational approach influenced by progressive disclosure learning principles
 
 ---
