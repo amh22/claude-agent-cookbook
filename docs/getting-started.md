@@ -182,6 +182,10 @@ npx tsx agents/code-review/01-basic.ts
 Test that everything works:
 
 ```bash
+# Using npm scripts (easier)
+npm run code-review:basic
+
+# Or directly with tsx
 npx tsx agents/code-review/01-basic.ts
 ```
 
@@ -269,9 +273,9 @@ Now that you're set up, explore the agents:
 
 ### Start Learning
 1. **[Code Review Agent](../agents/code-review/README.md)** - Three progressive levels teaching SDK concepts
-2. Run Level 1 to understand basics: `npx tsx agents/code-review/01-basic.ts`
-3. Progress to Level 2 for multi-tool coordination
-4. Master Level 3 with structured outputs and sub-agents
+2. Run Level 1 to understand basics: `npm run code-review:basic`
+3. Progress to Level 2 for multi-tool coordination: `npm run code-review:simple`
+4. Master Level 3 with structured outputs and sub-agents: `npm run code-review:advanced`
 
 ### Experiment
 - Modify prompts to change agent behavior

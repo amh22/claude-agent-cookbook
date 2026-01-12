@@ -33,6 +33,10 @@ This agent demonstrates a **progressive learning approach** with three levels of
 
 **Run it**:
 ```bash
+# Using npm scripts (easier)
+npm run code-review:basic
+
+# Or directly with tsx
 npx tsx agents/code-review/01-basic.ts
 ```
 
@@ -73,6 +77,10 @@ for await (const message of query({
 
 **Run it**:
 ```bash
+# Using npm scripts (current directory)
+npm run code-review:simple
+
+# Or directly with tsx
 npx tsx agents/code-review/02-simple.ts [directory]
 
 # Examples:
@@ -112,6 +120,10 @@ options: {
 
 **Run it**:
 ```bash
+# Using npm scripts (current directory)
+npm run code-review:advanced
+
+# Or directly with tsx
 npx tsx agents/code-review/03-advanced.ts [directory]
 
 # Examples:

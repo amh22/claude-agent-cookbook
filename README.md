@@ -107,6 +107,10 @@ The **Code Review Agent** is a fully-implemented example showing three levels of
 Learn fundamental concepts - streaming, tools, session tracking
 
 ```bash
+# Using npm scripts (easier)
+npm run code-review:basic
+
+# Or directly with tsx
 npx tsx agents/code-review/01-basic.ts
 ```
 
@@ -116,6 +120,10 @@ npx tsx agents/code-review/01-basic.ts
 Build a practical agent with multi-tool orchestration
 
 ```bash
+# Using npm scripts (easier)
+npm run code-review:simple
+
+# Or directly with tsx
 npx tsx agents/code-review/02-simple.ts [directory]
 ```
 
@@ -125,6 +133,10 @@ npx tsx agents/code-review/02-simple.ts [directory]
 Production-ready patterns with JSON schemas and sub-agents
 
 ```bash
+# Using npm scripts (easier)
+npm run code-review:advanced
+
+# Or directly with tsx
 npx tsx agents/code-review/03-advanced.ts [directory]
 ```
 
