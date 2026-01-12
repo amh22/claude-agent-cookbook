@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# TypeScript
+*.tsbuildinfo
+dist/
+build/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE - VS Code, Cursor, IntelliJ, Vim
+.vscode/
+.cursor/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*

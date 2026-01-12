@@ -1,0 +1,53 @@
+{
+  "name": "claude-agent-cookbook",
+  "version": "1.0.0",
+  "description": "A collection of practical, ready-to-use AI agent recipes using Claude Agent SDK - from code review to research, testing, and more",
+  "main": "agents/code-review/03-advanced.js",
+  "type": "module",
+  "scripts": {
+    "code-review:basic": "tsx agents/code-review/01-basic.ts",
+    "code-review:simple": "tsx agents/code-review/02-simple.ts",
+    "code-review:advanced": "tsx agents/code-review/03-advanced.ts",
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "claude",
+    "ai-agents",
+    "cookbook",
+    "anthropic",
+    "agent-sdk",
+    "code-review",
+    "automation",
+    "education",
+    "learning",
+    "typescript",
+    "agents",
+    "recipes",
+    "ai",
+    "llm",
+    "machine-learning"
+  ],
+  "author": "Andrew Henry",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/claude-agent-cookbook.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/claude-agent-cookbook/issues"
+  },
+  "homepage": "https://github.com/yourusername/claude-agent-cookbook#readme",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@anthropic-ai/claude-agent-sdk": "^0.2.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.5",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}
