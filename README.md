@@ -6,19 +6,25 @@ A growing collection of agent implementations demonstrating different use cases,
 
 ## What is This?
 
-Think of this as a cookbook for AI agents - instead of food recipes, you get code recipes. Each agent demonstrates how to solve a specific problem using the Claude Agent SDK, from simple file operations to complex multi-agent orchestration.
+A cookbook for building AI agents with the Claude Agent SDK. Each recipe shows how to solve real problems - code analysis, research, automation - using Claude's autonomous agentic capabilities.
 
-Unlike traditional code examples that just show API calls, these agents are **fully autonomous** - you give them a task, and Claude figures out which tools to use, how to use them, and returns structured results. No manual tool orchestration needed.
+**Agent SDK vs Raw API:** With raw Anthropic API calls, you implement the agentic loop yourself - calling the API, parsing tool calls, executing tools, sending results back, deciding when to continue. With the Agent SDK, you define a task and available tools, then Claude autonomously handles the entire loop. You can intercede via permissions and hooks when needed, but don't need to.
 
 ## What Makes Agent SDK Different?
 
-**Claude executes tools directly** - You don't implement tool logic or build execution loops. Just define what tools are available, and Claude autonomously decides when and how to use them.
+**Autonomous agentic loop** - Define your task and available tools, then Claude runs autonomously - deciding which tools to use, executing them, and iterating until complete. No manual loop implementation needed.
+
+**Interruptible autonomy** - While Claude runs autonomously, you can intercede via permission modes (approve dangerous ops) and hooks (react to tool execution). Autonomous by default, controllable when needed.
 
 **Built-in agentic behavior** - Claude naturally breaks down tasks, uses tools in sequence, and adjusts its approach based on results.
 
 **Streaming by design** - Watch Claude work in real-time as it thinks, calls tools, and builds toward the solution.
 
-**Production-ready tools** - File operations, search, web access, shell commands, and sub-agent delegation included out of the box.
+**Built-in tools** - File operations (Read, Write, Edit, Glob, Grep), web access (WebFetch, WebSearch), shell commands (Bash), sub-agent delegation, and more from the `claude_code` preset. Permission modes control safety.
+
+**Extensible via MCP** - Add custom tools through the Model Context Protocol beyond the built-in `claude_code` preset.
+
+**Process isolation** - Claude Code runs in a secure subprocess, streaming messages to your application in real-time.
 
 ## Available Recipes
 
@@ -45,7 +51,7 @@ Want to add a new recipe? See [Contributing](#contributing)!
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/claude-agent-cookbook.git
+git clone https://github.com/amh22/claude-agent-cookbook.git
 cd claude-agent-cookbook
 
 # Install dependencies
@@ -58,7 +64,7 @@ npm install
 
 ⚠️ **Important**: You need an Anthropic API key to run these agents.
 
-Choose one of these three methods:
+Choose one of these methods:
 
 ### Method 1: Environment File (Recommended for Development)
 
@@ -78,18 +84,6 @@ export ANTHROPIC_API_KEY=sk-ant-api03-your-key-here
 
 # Then run any agent
 npx tsx agents/code-review/01-basic.ts
-```
-
-### Method 3: Anthropic CLI (Persistent Configuration)
-
-```bash
-# Install Anthropic CLI globally
-npm install -g @anthropic-ai/sdk
-
-# Configure your API key (will be saved)
-anthropic configure
-
-# Follow prompts to enter your API key
 ```
 
 **Security Best Practices:**
@@ -366,4 +360,4 @@ Feel free to use these recipes in your own projects, commercial or otherwise!
 
 **Found this helpful?** Star the repo ⭐ and share with others!
 
-**Questions or feedback?** Open an issue or start a discussion on [GitHub](https://github.com/yourusername/claude-agent-cookbook/issues)
+**Questions or feedback?** Open an issue or start a discussion on [GitHub](https://github.com/amh22/claude-agent-cookbook/issues)
