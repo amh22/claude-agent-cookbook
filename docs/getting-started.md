@@ -25,7 +25,7 @@ If you need to upgrade Node.js, visit [nodejs.org](https://nodejs.org/) or use a
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/claude-agent-cookbook.git
+git clone https://github.com/amh22/claude-agent-cookbook.git
 cd claude-agent-cookbook
 ```
 
@@ -54,7 +54,7 @@ This installs:
 
 ### Choose Your Setup Method
 
-Pick ONE of the following three methods based on your workflow:
+Pick ONE of the following methods based on your workflow:
 
 ---
 
@@ -141,63 +141,27 @@ source ~/.zshrc
 
 ---
 
-## Method 3: Anthropic CLI
-
-**✅ Recommended for**: Global configuration, multiple projects
-
-**Pros**: Persistent across projects, managed by official tool
-
-**Setup**:
-
-```bash
-# 1. Install Anthropic CLI globally
-npm install -g @anthropic-ai/sdk
-
-# 2. Configure your API key
-anthropic configure
-
-# 3. Follow the interactive prompts:
-# - Enter your API key when prompted
-# - Press Enter to confirm
-```
-
-The CLI stores your key securely in your home directory.
-
-**Run an agent**:
-
-```bash
-# Works automatically with configured key
-npx tsx agents/code-review/01-basic.ts
-```
-
-**Notes**:
-- Key is stored in `~/.anthropic/config`
-- Works across all projects on your machine
-- Can be updated anytime with `anthropic configure`
-
----
-
 ## Verify Your Setup
 
 Test that everything works:
 
 ```bash
 # Using npm scripts (easier)
-npm run code-review:basic
+npm run basics:sdk
 
 # Or directly with tsx
-npx tsx agents/code-review/01-basic.ts
+npx tsx agents/00-basics/01-basic-sdk.ts
 ```
 
 Expected output:
 
 ```
-🤖 Starting Basic Agent Demo
+🤖 Starting SDK Basics Demo
 
 📋 Session ID: abc123...
 🛠️  Available tools: Glob, Read
 
-💭 I'll list the files in the current directory...
+💭 I'll list the TypeScript files in the current directory...
 🔧 Using tool: Glob
 ...
 ✅ Done: success
@@ -272,10 +236,10 @@ npm install
 Now that you're set up, explore the agents:
 
 ### Start Learning
-1. **[Code Review Agent](../agents/code-review/README.md)** - Three progressive levels teaching SDK concepts
-2. Run Level 1 to understand basics: `npm run code-review:basic`
-3. Progress to Level 2 for multi-tool coordination: `npm run code-review:simple`
-4. Master Level 3 with structured outputs and sub-agents: `npm run code-review:advanced`
+1. **[SDK Basics](../agents/00-basics/README.md)** - Start here first to understand core concepts: `npm run basics:sdk`
+2. **[Code Review Agent](../agents/code-review/README.md)** - Two progressive levels teaching real-world patterns
+3. Run Level 1 for simple multi-tool coordination: `npm run code-review:simple`
+4. Master Level 2 with structured outputs and sub-agents: `npm run code-review:advanced`
 
 ### Experiment
 - Modify prompts to change agent behavior
@@ -300,8 +264,8 @@ See [CONTRIBUTING.md](../CONTRIBUTING.md) for details.
 
 ## Need Help?
 
-- **Bug reports**: [Open an issue](https://github.com/yourusername/claude-agent-cookbook/issues)
-- **Questions**: Start a [discussion](https://github.com/yourusername/claude-agent-cookbook/discussions)
+- **Bug reports**: [Open an issue](https://github.com/amh22/claude-agent-cookbook/issues)
+- **Questions**: Start a [discussion](https://github.com/amh22/claude-agent-cookbook/discussions)
 - **Feature requests**: Open an issue with "Feature Request" label
 
 ---

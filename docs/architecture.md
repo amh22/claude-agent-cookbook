@@ -8,11 +8,11 @@ This document explains the design philosophy, patterns, and technical decisions 
 
 **Principle**: Start simple, reveal complexity gradually.
 
-Each agent recipe demonstrates concepts in increasing sophistication. The Code Review Agent exemplifies this:
+The cookbook uses progressive disclosure across recipes:
 
-- **Level 1**: Bare minimum - file listing with basic SDK usage
-- **Level 2**: Practical application - actual code review with multi-tool coordination
-- **Level 3**: Production ready - structured outputs, sub-agents, type safety
+- **SDK Basics** (`agents/00-basics/`): Foundation - streaming, tool autonomy, session tracking
+- **Code Review Level 1** (`01-simple.ts`): Application - multi-tool coordination for real analysis
+- **Code Review Level 2** (`02-advanced.ts`): Advanced patterns - structured outputs, sub-agents, type safety
 
 **Why this matters**: Overwhelming beginners with advanced patterns upfront leads to confusion. Progressive levels let learners build confidence before tackling complexity.
 
@@ -46,13 +46,14 @@ No toy examples or contrived scenarios. Each agent addresses a genuine use case:
 ```
 claude-agent-cookbook/
 ├── agents/                    # Agent recipes (the "main content")
+│   ├── 00-basics/            # Start here! SDK fundamentals
+│   │   ├── 01-basic-sdk.ts   # Core concepts: streaming, tools, sessions
+│   │   └── README.md
 │   ├── code-review/          # One recipe per directory
-│   │   ├── 01-basic.ts       # Progressive levels
-│   │   ├── 02-simple.ts
-│   │   ├── 03-advanced.ts
+│   │   ├── 01-simple.ts      # Progressive levels
+│   │   ├── 02-advanced.ts
 │   │   ├── examples/         # Test data and sample outputs
-│   │   │   ├── buggy-code.ts
-│   │   │   └── sample-output.txt
+│   │   │   └── buggy-code.ts
 │   │   └── README.md         # Recipe-specific docs
 │   ├── research/             # Future recipes...
 │   └── ...
@@ -75,11 +76,11 @@ claude-agent-cookbook/
 
 5. **Placeholder directories**: Even unimplemented recipes have READMEs showing the roadmap and inviting contributions.
 
-## Code Review Agent Architecture
+## Agent Architecture
 
-### Level 1: Basic SDK Usage
+### SDK Basics (`agents/00-basics/`)
 
-**Purpose**: Teach SDK fundamentals without distraction.
+**Purpose**: Teach SDK fundamentals before applying them.
 
 **Key Decisions**:
 
@@ -96,7 +97,11 @@ for await (const message of query({ ... })) {
 }
 ```
 
-### Level 2: Simple Code Review
+**Note**: Start here before tackling code review agents!
+
+## Code Review Agent Architecture
+
+### Level 1: Simple Code Review (`01-simple.ts`)
 
 **Purpose**: Show real-world application with autonomous multi-tool use.
 
@@ -119,9 +124,9 @@ Claude autonomously:
 3. Greps for specific patterns
 4. Combines findings into analysis
 
-### Level 3: Advanced with Structured Output
+### Level 2: Advanced with Structured Output (`02-advanced.ts`)
 
-**Purpose**: Production-ready patterns for reliable, automated systems.
+**Purpose**: Advanced patterns for reliable, type-safe agent systems.
 
 **Key Decisions**:
 
@@ -284,24 +289,23 @@ Benefits: Compile-time checking, autocomplete, refactoring safety.
 
 All implementations handle common failures:
 
-1. **Missing API key**: Clear instructions on all three setup methods
+1. **Missing API key**: Clear instructions on setup methods (.env file or shell export)
 2. **Network failures**: Informative error messages with context
 3. **Tool permission denials**: Guidance on fixing permissions
 4. **Invalid inputs**: Helpful feedback on correct usage
 
 ### Progressive Enhancement
 
-- **Level 1**: Basic error catching with console output
-- **Level 2**: User-friendly messages with troubleshooting hints
-- **Level 3**: Comprehensive handling with proper exit codes
+- **SDK Basics**: Basic error catching with console output
+- **Code Review Level 1**: User-friendly messages with troubleshooting hints
+- **Code Review Level 2**: Comprehensive handling with proper exit codes
 
-**Example** (all levels):
+**Example**:
 ```typescript
 if (error.message.includes("ANTHROPIC_API_KEY")) {
   console.error("\n💡 Tip: Set your API key using one of these methods:")
   console.error("   1. Create a .env file...")
   console.error("   2. Export in shell...")
-  console.error("   3. Use Anthropic CLI...")
 }
 ```
 
@@ -453,4 +457,4 @@ See [CONTRIBUTING.md](../CONTRIBUTING.md) for detailed guidelines.
 
 ---
 
-Questions about architecture decisions? Open an issue on [GitHub](https://github.com/yourusername/claude-agent-cookbook/issues)!
+Questions about architecture decisions? Open an issue on [GitHub](https://github.com/amh22/claude-agent-cookbook/issues)!
