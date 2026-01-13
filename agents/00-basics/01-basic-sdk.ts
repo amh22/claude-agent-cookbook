@@ -12,8 +12,10 @@ import { query } from "@anthropic-ai/claude-agent-sdk"
  * - Cost monitoring
  *
  * Key Concept: What makes the Agent SDK different?
- * Claude executes tools directly - you don't implement tool logic,
- * just handle the streaming responses as Claude autonomously works.
+ * With raw Anthropic API calls, you implement the agentic loop yourself - calling
+ * the API, parsing tool calls, executing tools, sending results back, deciding when
+ * to continue. With the Agent SDK, you define a task and available tools, then Claude
+ * autonomously handles the entire loop. You handle streaming responses as Claude works.
  *
  * Start here before building any agent - these concepts are universal!
  *
@@ -74,7 +76,6 @@ main().catch((error) => {
     console.error("\n💡 Tip: Set your API key using one of these methods:")
     console.error("   1. Create a .env file with: ANTHROPIC_API_KEY=sk-ant-api03-...")
     console.error("   2. Export in shell: export ANTHROPIC_API_KEY=sk-ant-api03-...")
-    console.error("   3. Use Anthropic CLI: anthropic configure")
     console.error("\nGet your key at: https://console.anthropic.com/settings/keys")
   }
 

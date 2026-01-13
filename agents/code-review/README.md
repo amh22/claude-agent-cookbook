@@ -4,14 +4,14 @@ Automated code analysis powered by Claude - find bugs, security vulnerabilities,
 
 ## Overview
 
-This agent demonstrates **progressive implementation** with two levels, showing the evolution from simple to production-ready.
+This agent demonstrates **progressive implementation** with two levels, showing the evolution from simple to advanced patterns.
 
 **Prerequisites**: Complete the [SDK Basics tutorial](../00-basics/) first to understand foundational concepts!
 
 ### Why Two Levels?
 
 1. **Learn incrementally** - Master practical patterns step-by-step
-2. **See the evolution** - Understand how simple agents become production-ready
+2. **See the evolution** - Understand how simple agents gain advanced features
 3. **Choose your complexity** - Use the level that matches your needs
 
 ## The Two Levels
@@ -59,7 +59,7 @@ options: {
 
 ### Level 2: Advanced with Structured Output (`02-advanced.ts`)
 
-**Goal**: Production-ready patterns with type-safe, machine-readable results
+**Goal**: Advanced patterns with type-safe, machine-readable results
 
 **What it does**:
 - Performs comprehensive code review
@@ -81,10 +81,10 @@ options: {
 npm run code-review:advanced
 
 # Or review a specific directory
-npx tsx agents/code-review/03-advanced.ts /path/to/your/code
+npx tsx agents/code-review/02-advanced.ts /path/to/your/code
 
 # Review entire repository
-npx tsx agents/code-review/03-advanced.ts .
+npx tsx agents/code-review/02-advanced.ts .
 ```
 
 **Key Code**:
@@ -110,7 +110,7 @@ options: {
 
 **Estimated cost**: $0.03 - $0.10
 
-## Example Output (Level 3)
+## Example Output (Level 2)
 
 ```
 ==================================================
@@ -209,9 +209,8 @@ Traditional static analysis tools follow fixed rules. This agent:
 
 | Level | Typical Cost | What Affects Cost |
 |-------|--------------|-------------------|
-| Level 1 | $0.001 - $0.003 | Few files listed |
-| Level 2 | $0.01 - $0.05 | Number of files read |
-| Level 3 | $0.03 - $0.10 | Files + sub-agent execution |
+| Level 1 (Simple) | $0.01 - $0.05 | Number of files read |
+| Level 2 (Advanced) | $0.03 - $0.10 | Files + sub-agent execution |
 
 **Cost factors**:
 - Number of files analyzed
@@ -222,7 +221,7 @@ Traditional static analysis tools follow fixed rules. This agent:
 **Cost optimization tips**:
 - Use `.gitignore` patterns to exclude `node_modules`, `dist`, etc.
 - Start with smaller directories to test
-- Use Level 2 for quick checks, Level 3 for thorough analysis
+- Use Level 1 for quick checks, Level 2 for thorough analysis with structured output
 - Consider Sonnet model for cheaper operation (change `model: "sonnet"`)
 
 ## Extending This Agent
@@ -284,7 +283,7 @@ Be specific about file names and line numbers.`
 
 ### Output to File
 
-Modify Level 3 to save results:
+Modify Level 2 to save results:
 
 ```typescript
 import { writeFileSync } from 'fs'
@@ -298,11 +297,11 @@ if (result) {
 ## Integration Ideas
 
 ### CI/CD Pipeline
-Run Level 3 in GitHub Actions and fail if critical issues found:
+Run Level 2 in GitHub Actions and fail if critical issues found:
 
 ```yaml
 - name: Run Code Review Agent
-  run: npx tsx agents/code-review/03-advanced.ts src
+  run: npx tsx agents/code-review/02-advanced.ts src
   env:
     ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 ```
@@ -312,14 +311,14 @@ Review changed files before commit:
 
 ```bash
 #!/bin/bash
-npx tsx agents/code-review/03-advanced.ts $(git diff --cached --name-only)
+npx tsx agents/code-review/02-advanced.ts $(git diff --cached --name-only)
 ```
 
 ### IDE Extension
 Integrate with your editor for on-demand reviews
 
 ### Dashboard
-Parse JSON output from Level 3 into a web dashboard showing trends over time
+Parse JSON output from Level 2 into a web dashboard showing trends over time
 
 ## Troubleshooting
 
@@ -327,13 +326,13 @@ Parse JSON output from Level 3 into a web dashboard showing trends over time
 → Check the directory path. Use `.` for current directory.
 
 ### "Permission denied"
-→ Level 2 and 3 use `bypassPermissions`. If you see this, check file permissions.
+→ Both levels use `bypassPermissions` for read operations. If you see this, check file permissions.
 
 ### "Rate limit exceeded"
 → Anthropic API has rate limits. Wait a moment and retry, or reduce the scope.
 
 ### "Cost too high"
-→ Use Level 2 for quick checks, or switch to Sonnet model: `model: "sonnet"`
+→ Use Level 1 for quick checks, or switch to Sonnet model: `model: "sonnet"`
 
 ### Agent misses obvious issues
 → Try Opus model for better analysis, or make your prompt more specific about what to look for.
@@ -347,4 +346,4 @@ Parse JSON output from Level 3 into a web dashboard showing trends over time
 
 ---
 
-**Questions?** Open an issue on [GitHub](https://github.com/yourusername/claude-agent-cookbook/issues)
+**Questions?** Open an issue on [GitHub](https://github.com/amh22/claude-agent-cookbook/issues)

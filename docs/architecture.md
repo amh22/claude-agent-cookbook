@@ -197,13 +197,41 @@ agents: {
 
 ### Why Not Bash?
 
-While Bash is available, structured tools provide:
-- **Better error handling**: Specific error types instead of exit codes
-- **Clearer intent**: Tool name indicates purpose
-- **Safer execution**: No command injection risks
-- **Easier testing**: Deterministic behavior
+The Agent SDK includes a `Bash` tool that can execute arbitrary shell commands. While powerful, it's often better to use structured tools for file operations.
 
-**When to use Bash**: Git operations, running test suites, executing build scripts.
+**Why structured tools are preferred for file operations:**
+
+- **Better error handling**: Structured tools return typed errors (file not found, permission denied, etc.) instead of generic exit codes. Claude can respond to specific error types more intelligently.
+
+- **Clearer intent**: `Read("file.ts")` is immediately clear vs `cat file.ts` or `head -n 50 file.ts`. Tool names make agent behavior easier to understand and debug.
+
+- **Safer execution**: No risk of command injection or unintended shell expansion. `Read(userProvidedPath)` is safe; `Bash("cat " + userProvidedPath)` could be exploited.
+
+- **Easier testing**: Deterministic behavior with predictable inputs/outputs. No shell environment dependencies or PATH issues.
+
+**When Bash is the right choice:**
+
+- **Git operations**: `git status`, `git diff`, `git log` - Git's rich CLI is designed for this
+- **Running test suites**: `npm test`, `pytest`, `cargo test` - Testing tools expect shell execution
+- **Build scripts**: `npm run build`, `make`, `docker build` - Build tools integrate via shell
+- **Process management**: Starting/stopping services, checking running processes
+- **Environment-specific commands**: System utilities that don't have structured equivalents
+
+**Example comparison:**
+
+```typescript
+// ❌ Less clear: Using Bash for file operations
+allowedTools: ["Bash"]
+// Claude might: "bash: find . -name '*.ts' | xargs grep 'TODO'"
+// Hard to parse output, fragile, unclear errors
+
+// ✅ Better: Using structured tools
+allowedTools: ["Glob", "Grep"]
+// Claude uses: Glob("**/*.ts") then Grep("TODO")
+// Clean structured responses, clear errors, easier to track
+```
+
+**Rule of thumb**: Use structured tools for file/data operations, Bash for external commands and processes.
 
 ## Sub-Agent Design
 
